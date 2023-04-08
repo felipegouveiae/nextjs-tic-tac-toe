@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "cypress": "cypress open",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,10 +17,11 @@
     "eslint-config-next": "13.2.4",
     "next": "^13.3.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.0.2"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "sass": "^1.61.0"
+    "cypress": "^12.9.0",
+    "sass": "^1.61.0",
+    "typescript": "^5.0.4"
   }
 }

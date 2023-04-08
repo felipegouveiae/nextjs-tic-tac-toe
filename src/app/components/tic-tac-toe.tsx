@@ -7,23 +7,15 @@ import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
 import Blank from "@/app/components/children/blank/blank";
 import {structuredClone} from "next/dist/compiled/@edge-runtime/primitives/structured-clone";
-
-const symbolX = 1;
-const circle = 2;
-const blank = 0;
+import {defaultState, Symbols} from "@/app/components/winner-checker/winner-checker";
 
 export default () => {
 
-    const [state, setState] = useState([
-        [blank, blank, blank],
-        [blank, blank, blank],
-        [blank, blank, blank]
-    ]);
-
-    const [turn, setTurn] = useState(circle);
+    const [state, setState] = useState(defaultState);
+    const [turn, setTurn] = useState(Symbols.Circle);
 
     const toggleTurn = () => {
-        setTurn(turn === circle ? symbolX : circle);
+        setTurn(turn === Symbols.Circle ? Symbols.Cross : Symbols.Circle);
     }
 
     const setter = (row: number, col: number, value: number) => {
@@ -32,14 +24,14 @@ export default () => {
 
         setState(newState);
         toggleTurn();
-
-        if(checkWinner(circle)){
-            alert('Circle is the winner!');
-        }
-
-        if(checkWinner(symbolX)){
-            alert('Cross is the winner!');
-        }
+        //
+        // if (checkWinner(Symbols.Circle)) {
+        //     alert('Circle is the winner!');
+        // }
+        //
+        // if (checkWinner(Symbols.Cross)) {
+        //     alert('Cross is the winner!');
+        // }
     };
 
     const checkWinner = (symbol: number) => {
@@ -61,9 +53,9 @@ export default () => {
             setter(row, col, turn);
         }}/>);
 
-        if (value === circle)
+        if (value === Symbols.Circle)
             result = (<Circle/>);
-        else if (value === symbolX)
+        else if (value === Symbols.Cross)
             result = (<SymbolX/>);
 
         return (
