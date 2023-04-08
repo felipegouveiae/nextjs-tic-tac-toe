@@ -7,7 +7,7 @@ import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
 import Blank from "@/app/components/children/blank/blank";
 import {structuredClone} from "next/dist/compiled/@edge-runtime/primitives/structured-clone";
-import {buildDefaultState, Symbols} from "@/app/components/winner-checker/winner-checker";
+import {buildDefaultState, Symbols, WinnerChecker} from "@/app/components/winner-checker/winner-checker";
 
 export default () => {
 
@@ -25,25 +25,17 @@ export default () => {
         setState(newState);
         toggleTurn();
 
-        //
-        // if (checkWinner(Symbols.Circle)) {
-        //     alert('Circle is the winner!');
-        // }
-        //
-        // if (checkWinner(Symbols.Cross)) {
-        //     alert('Cross is the winner!');
-        // }
+        if (new WinnerChecker(newState).isWinner(Symbols.Circle)) {
+            alert('Circle is the winner!');
+        }
+
+        if (new WinnerChecker(newState).isWinner(Symbols.Cross)) {
+            alert('Cross is the winner!');
+        }
     };
 
     const checkWinner = (symbol: number) => {
-
-        for (let i = 0; i < state.length; i++) {
-            if (state[i].every(col => col == symbol)) {
-                return true;
-            }
-        }
-
-        return false;
+        return new WinnerChecker(state).isWinner(symbol);
     }
 
     const printSelection = (row: number, col: number) => {
@@ -68,6 +60,9 @@ export default () => {
 
     return (
         <div className="board">
+
+            <h1>{turn === Symbols.Circle ? 'Circle' : 'Cross'}'s turn!</h1>
+
             <div className="container">
                 <div className="row">
                     <div className="col border-right border-bottom">
