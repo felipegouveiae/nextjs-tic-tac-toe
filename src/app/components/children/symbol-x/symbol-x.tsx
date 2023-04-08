@@ -1,7 +1,9 @@
 import './symbol-x.scss';
 
-export default () =>{
+const SymbolX = () => {
     return (
         <div className="square"></div>
     );
 }
+
+export default SymbolX;

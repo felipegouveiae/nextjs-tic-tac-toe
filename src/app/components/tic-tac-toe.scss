@@ -42,7 +42,12 @@ $border-size: 3px;
         vertical-align: middle;
         display: flex;
 
-
+        .symbol {
+          height: 60%;
+          width: 60%;
+          margin: auto;
+          display: inline-flex;
+        }
       }
     }
 

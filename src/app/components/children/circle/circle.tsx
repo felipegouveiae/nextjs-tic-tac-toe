@@ -1,7 +1,9 @@
 import './circle.scss'
 
-export default () => {
+const Circle = () => {
     return (
         <div className="circle"></div>
     )
 }
+
+export default  Circle;
