@@ -2,26 +2,30 @@
 
 import './tic-tac-toe.scss'
 
+import React, {useState} from "react";
 import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
-import {Fragment, useState} from "react";
+import Blank from "@/app/components/children/blank/blank";
 
 const symbolX = 1;
 const circle = 2;
+const blank = 0;
 
 export default () => {
 
     const [state, setState] = useState([
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0,]
+        [blank, blank, blank],
+        [blank, blank, blank],
+        [blank, blank, blank]
     ]);
+
+    assadf
 
     const printSelection = (row: number, col: number) => {
 
         const value = state[row][col];
 
-        let result = (<Fragment></Fragment>);
+        let result = (<Blank />);
 
         if (value === circle)
             result = (<Circle/>);
