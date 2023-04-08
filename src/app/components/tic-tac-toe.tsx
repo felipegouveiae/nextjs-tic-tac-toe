@@ -32,7 +32,26 @@ export default () => {
 
         setState(newState);
         toggleTurn();
+
+        if(checkWinner(circle)){
+            alert('Circle is the winner!');
+        }
+
+        if(checkWinner(symbolX)){
+            alert('Cross is the winner!');
+        }
     };
+
+    const checkWinner = (symbol: number) => {
+
+        for (let i = 0; i < state.length; i++) {
+            if (state[i].every(col => col == symbol)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     const printSelection = (row: number, col: number) => {
 
