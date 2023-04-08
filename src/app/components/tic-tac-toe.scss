@@ -1,4 +1,4 @@
-$border-color: red;
+$border-color: white;
 $border-size: 3px;
 
 .border-right {
@@ -20,7 +20,6 @@ $border-size: 3px;
 .board {
   width: 70vh;
   height: 70vh;
-  border: white solid 1px;
 
   .container {
     width: 100%;
@@ -32,17 +31,39 @@ $border-size: 3px;
     .row {
       height: 100%;
       width: 100%;
-      //display: block;
-      //display: flex;
-      //color: green;
-      //justify-content: center;
-      //
-      //.col {
-      //  flex-direction: column;
-      //  width: 33%;
-      //  //height: 100%;
-      //  background: white;
-      //}
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+
+      .col {
+        height: 100%;
+        width: 100%;
+        text-align: center;
+        vertical-align: middle;
+        display: flex;
+
+        .square {
+          width: 60%;
+          height: 60%;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          display: flex;
+
+          &:after {
+            content: "\274c";
+            font-size: 10rem;
+            color: #fff;
+          }
+        }
+
+        .circle {
+          border: solid 15px white;
+          border-radius: 100%;
+          width: 60%;
+          height: 60%;
+        }
+      }
     }
 
   }
