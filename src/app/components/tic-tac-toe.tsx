@@ -12,12 +12,12 @@ const circle = 2;
 export default () => {
 
     const [state, setState] = useState([
-        [symbolX, circle, 0],
+        [0, 0, 0],
         [0, 0, 0],
         [0, 0, 0,]
     ]);
 
-    const print = (row: number, col: number) => {
+    const printSelection = (row: number, col: number) => {
 
         const value = state[row][col];
 
@@ -40,35 +40,35 @@ export default () => {
             <div className="container">
                 <div className="row">
                     <div className="col border-right border-bottom">
-                        {print(0, 0)}
+                        {printSelection(0, 0)}
                     </div>
                     <div className="col border-bottom">
-                        {print(0, 1)}
+                        {printSelection(0, 1)}
                     </div>
                     <div className="col border-left border-bottom">
-                        {print(0, 2)}
+                        {printSelection(0, 2)}
                     </div>
                 </div>
                 <div className="row">
                     <div className="col border-right border-bottom">
-                        D
+                        {printSelection(1, 0)}
                     </div>
                     <div className="col border-bottom">
-                        E
+                        {printSelection(1, 1)}
                     </div>
                     <div className="col border-left border-bottom">
-                        F
+                        {printSelection(1, 2)}
                     </div>
                 </div>
                 <div className="row">
                     <div className="col border-right">
-                        G
+                        {printSelection(2, 0)}
                     </div>
                     <div className="col">
-                        H
+                        {printSelection(2, 1)}
                     </div>
                     <div className="col border-left">
-                        I
+                        {printSelection(2, 2)}
                     </div>
                 </div>
             </div>
