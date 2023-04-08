@@ -7,11 +7,11 @@ import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
 import Blank from "@/app/components/children/blank/blank";
 import {structuredClone} from "next/dist/compiled/@edge-runtime/primitives/structured-clone";
-import {defaultState, Symbols} from "@/app/components/winner-checker/winner-checker";
+import {buildDefaultState, Symbols} from "@/app/components/winner-checker/winner-checker";
 
 export default () => {
 
-    const [state, setState] = useState(defaultState);
+    const [state, setState] = useState(buildDefaultState());
     const [turn, setTurn] = useState(Symbols.Circle);
 
     const toggleTurn = () => {
@@ -24,6 +24,7 @@ export default () => {
 
         setState(newState);
         toggleTurn();
+
         //
         // if (checkWinner(Symbols.Circle)) {
         //     alert('Circle is the winner!');
