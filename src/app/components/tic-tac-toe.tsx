@@ -19,8 +19,6 @@ export default () => {
         [blank, blank, blank]
     ]);
 
-    assadf
-
     const printSelection = (row: number, col: number) => {
 
         const value = state[row][col];
