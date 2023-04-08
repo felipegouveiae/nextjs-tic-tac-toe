@@ -1,0 +1,14 @@
+.square {
+  width: 60%;
+  height: 60%;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  display: flex;
+
+  &:after {
+    content: "\274c";
+    font-size: 10rem;
+    color: #fff;
+  }
+}

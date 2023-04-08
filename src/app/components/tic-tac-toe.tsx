@@ -1,21 +1,21 @@
 import './tic-tac-toe.scss'
 
+import Circle from "@/app/components/children/circle/circle";
+import SymbolX from "@/app/components/children/symbol-x/symbol-x";
+
 export default () => {
     return (
         <div className="board">
-
             <div className="container">
-
-
                 <div className="row">
                     <div className="col border-right border-bottom">
-                        <div className="square"></div>
+                        <SymbolX/>
                     </div>
                     <div className="col border-bottom">
-                        <div className="circle">A</div>
+                        <Circle/>
                     </div>
                     <div className="col border-left border-bottom">
-                        C
+                        <SymbolX/>
                     </div>
                 </div>
                 <div className="row">
