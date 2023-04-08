@@ -6,6 +6,7 @@ import React, {useState} from "react";
 import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
 import Blank from "@/app/components/children/blank/blank";
+import {structuredClone} from "next/dist/compiled/@edge-runtime/primitives/structured-clone";
 
 const symbolX = 1;
 const circle = 2;
@@ -19,11 +20,27 @@ export default () => {
         [blank, blank, blank]
     ]);
 
+    const [turn, setTurn] = useState(circle);
+
+    const toggleTurn = () => {
+        setTurn(turn === circle ? symbolX : circle);
+    }
+
+    const setter = (row: number, col: number, value: number) => {
+        const newState = structuredClone(state);
+        newState[row][col] = value;
+
+        setState(newState);
+        toggleTurn();
+    };
+
     const printSelection = (row: number, col: number) => {
 
         const value = state[row][col];
 
-        let result = (<Blank />);
+        let result = (<Blank click={() => {
+            setter(row, col, turn);
+        }}/>);
 
         if (value === circle)
             result = (<Circle/>);

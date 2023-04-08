@@ -1,8 +1,8 @@
 import './blank.scss'
 
-const Blank = () => {
+const Blank = (props : any) => {
     return (
-        <button className="blank"></button>
+        <button className="blank" onClick={props.click}></button>
     )
 }
 
