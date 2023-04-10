@@ -2,20 +2,42 @@
 
 import './tic-tac-toe.scss'
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Circle from "@/app/components/children/circle/circle";
 import SymbolX from "@/app/components/children/symbol-x/symbol-x";
 import Blank from "@/app/components/children/blank/blank";
 import {structuredClone} from "next/dist/compiled/@edge-runtime/primitives/structured-clone";
-import {buildDefaultState, Symbols, WinnerChecker} from "@/app/components/winner-checker/winner-checker";
+import {buildDefaultState, StateMatrix, Symbols, WinnerChecker} from "@/app/components/winner-checker/winner-checker";
+
+type Score = {
+    symbol: Symbols,
+    wins:number;
+}
+
+type ScoreBoard = {
+    ai: Score;
+    you: Score;
+}
 
 export default () => {
 
-    const [state, setState] = useState(buildDefaultState());
-    const [turn, setTurn] = useState(Symbols.Circle);
+    const [state, setState] = useState<StateMatrix>(buildDefaultState());
+    const [turn, setTurn] = useState<Symbols>(Symbols.Circle);
+
+    const [score, setScore] = useState<ScoreBoard>();
+
+    useEffect(() => {
+
+    } , [])
 
     const toggleTurn = () => {
         setTurn(turn === Symbols.Circle ? Symbols.Cross : Symbols.Circle);
+    }
+
+
+    const reset = () => {
+        setState(buildDefaultState());
+        setScore({ai: 0, you: 0});
     }
 
     const setter = (row: number, col: number, value: number) => {
@@ -27,16 +49,13 @@ export default () => {
 
         if (new WinnerChecker(newState).isWinner(Symbols.Circle)) {
             alert('Circle is the winner!');
+            setScore({...score , })
         }
 
         if (new WinnerChecker(newState).isWinner(Symbols.Cross)) {
             alert('Cross is the winner!');
         }
     };
-
-    const checkWinner = (symbol: number) => {
-        return new WinnerChecker(state).isWinner(symbol);
-    }
 
     const printSelection = (row: number, col: number) => {
 
@@ -62,6 +81,22 @@ export default () => {
         <div className="board">
 
             <h1>{turn === Symbols.Circle ? 'Circle' : 'Cross'}'s turn!</h1>
+
+            <div className="commands">
+                <div>
+                    AI: {score.ai}
+                </div>
+                <div>
+                    YOU: {score.you}
+                </div>
+                <div>
+                    <button onClick={() => {
+                        reset();
+                    }}>
+                        RESET
+                    </button>
+                </div>
+            </div>
 
             <div className="container">
                 <div className="row">
